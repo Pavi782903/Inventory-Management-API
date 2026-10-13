@@ -1,0 +1,239 @@
+
+{
+  "info": {
+    "name": "Inventory Management API",
+    "description": "FastAPI, SQLAlchemy ORM and MySQL CRUD and filter tests.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "category_id",
+      "value": "1"
+    },
+    {
+      "key": "supplier_id",
+      "value": "1"
+    },
+    {
+      "key": "product_id",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "API root",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/"
+          }
+        },
+        {
+          "name": "Database health",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/health"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Create category",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"category_name\":\"Electronics\",\"description\":\"Electronic products\"}"
+            },
+            "url": "{{base_url}}/categories"
+          }
+        },
+        {
+          "name": "Get all categories",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/categories"
+          }
+        },
+        {
+          "name": "Get category by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/categories/{{category_id}}"
+          }
+        },
+        {
+          "name": "Update category",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"description\":\"Updated electronic products category\"}"
+            },
+            "url": "{{base_url}}/categories/{{category_id}}"
+          }
+        },
+        {
+          "name": "Delete category",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/categories/{{category_id}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Suppliers",
+      "item": [
+        {
+          "name": "Create supplier",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"supplier_name\":\"ABC Supplies\",\"email\":\"abc@example.com\",\"phone_number\":\"9876543210\",\"address\":\"Bengaluru\",\"company_name\":\"ABC Pvt Ltd\"}"
+            },
+            "url": "{{base_url}}/suppliers"
+          }
+        },
+        {
+          "name": "Get all suppliers",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/suppliers"
+          }
+        },
+        {
+          "name": "Get supplier by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/suppliers/{{supplier_id}}"
+          }
+        },
+        {
+          "name": "Update supplier",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"phone_number\":\"9999999999\"}"
+            },
+            "url": "{{base_url}}/suppliers/{{supplier_id}}"
+          }
+        },
+        {
+          "name": "Get supplier products",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/suppliers/{{supplier_id}}/products"
+          }
+        },
+        {
+          "name": "Delete supplier",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/suppliers/{{supplier_id}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Create product",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"product_name\":\"Laptop\",\"description\":\"Business laptop\",\"category_id\":1,\"supplier_id\":1,\"price\":750.00,\"quantity\":10}"
+            },
+            "url": "{{base_url}}/products"
+          }
+        },
+        {
+          "name": "Get all products",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/products"
+          }
+        },
+        {
+          "name": "Get product by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/products/{{product_id}}"
+          }
+        },
+        {
+          "name": "Update product",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"price\":700.00,\"quantity\":12}"
+            },
+            "url": "{{base_url}}/products/{{product_id}}"
+          }
+        },
+        {
+          "name": "Delete product",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/products/{{product_id}}"
+          }
+        },
+        {
+          "name": "Search by product name",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/products?search=laptop"
+          }
+        },
+        {
+          "name": "Filter by category",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/products?category_id={{category_id}}"
+          }
+        },
+        {
+          "name": "Filter by supplier",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/products?supplier_id={{supplier_id}}"
+          }
+        },
+        {
+          "name": "Filter by price range",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/products?min_price=100&max_price=1000"
+          }
+        },
+        {
+          "name": "Calculate inventory value",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/products/inventory-value"
+          }
+        }
+      ]
+    }
+  ]
+}

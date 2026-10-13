@@ -1,0 +1,7 @@
+
+fastapi
+uvicorn[standard]
+SQLAlchemy>=2.0,<3.0
+PyMySQL
+python-dotenv
+pydantic[email]
